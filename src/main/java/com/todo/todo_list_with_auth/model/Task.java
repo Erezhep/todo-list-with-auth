@@ -1,8 +1,6 @@
 package com.todo.todo_list_with_auth.model;
 
-
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -27,8 +25,7 @@ public class Task {
     @JoinColumn(name = "user_id")
     private User user;
 
-    // Getter
-
+    // Getters
     public Long getId() {
         return id;
     }
@@ -53,29 +50,28 @@ public class Task {
         return user;
     }
 
-    // Setter
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

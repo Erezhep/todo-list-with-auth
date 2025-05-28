@@ -23,7 +23,10 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/tasks", true)
                         .permitAll()
                 )
-                .logout(logout -> logout.permitAll());
+                .logout(logout -> logout.permitAll())
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/tasks/by-date", "/tasks/complete/**", "/tasks/delete/**") // Optional: Disable CSRF for testing
+                );
         return http.build();
     }
 
