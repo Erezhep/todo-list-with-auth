@@ -23,7 +23,12 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/tasks", true)
                         .permitAll()
                 )
-                .logout(logout -> logout.permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout") // Maps the /logout endpoint
+                        .logoutSuccessUrl("/login?logout") // Redirect after logout
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .permitAll())
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/tasks/by-date", "/tasks/complete/**", "/tasks/delete/**") // Optional: Disable CSRF for testing
                 );
